@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @site.name %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @site.number %>
+</p>
+
+<p>
+  <strong>Street address one:</strong>
+  <%= @site.street_address_one %>
+</p>
+
+<p>
+  <strong>Street address two:</strong>
+  <%= @site.street_address_two %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @site.town %>
+</p>
+
+<p>
+  <strong>Post code:</strong>
+  <%= @site.post_code %>
+</p>
+
+<p>
+  <strong>Head office:</strong>
+  <%= @site.head_office %>
+</p>
+
+<p>
+  <strong>Invoice address:</strong>
+  <%= @site.invoice_address %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @site.contact %>
+</p>
+
+<p>
+  <strong>Invoice email:</strong>
+  <%= @site.invoice_email %>
+</p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @site.invoice %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @site.payment_method %>
+</p>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

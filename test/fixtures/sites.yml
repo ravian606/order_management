@@ -1,0 +1,49 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id                 :bigint           not null, primary key
+#  name               :string(255)
+#  number             :string(255)
+#  street_address_one :string(255)
+#  street_address_two :string(255)
+#  town               :string(255)
+#  post_code          :string(255)
+#  head_office        :string(255)
+#  invoice_address    :string(255)
+#  contact            :string(255)
+#  invoice_email      :string(255)
+#  phone_number       :string(255)
+#  payment_method     :string(255)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  company_id         :bigint
+#
+
+one:
+  name: MyString
+  number: MyString
+  street_address_one: MyString
+  street_address_two: MyString
+  town: MyString
+  post_code: MyString
+  head_office: MyString
+  invoice_address: MyString
+  contact: MyString
+  invoice_email: MyString
+  invoice: 
+  payment_method: MyString
+
+two:
+  name: MyString
+  number: MyString
+  street_address_one: MyString
+  street_address_two: MyString
+  town: MyString
+  post_code: MyString
+  head_office: MyString
+  invoice_address: MyString
+  contact: MyString
+  invoice_email: MyString
+  invoice: 
+  payment_method: MyString
