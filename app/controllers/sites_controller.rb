@@ -1,9 +1,10 @@
 class SitesController < ApplicationController
+  before_action :get_company
   before_action :set_site, only: %i[ show edit update destroy ]
 
   # GET /sites or /sites.json
   def index
-    @sites = Site.all
+    @sites = @company.sites
   end
 
   # GET /sites/1 or /sites/1.json
@@ -12,7 +13,7 @@ class SitesController < ApplicationController
 
   # GET /sites/new
   def new
-    @site = Site.new
+    @site = @company.sites.build
   end
 
   # GET /sites/1/edit
@@ -21,11 +22,11 @@ class SitesController < ApplicationController
 
   # POST /sites or /sites.json
   def create
-    @site = Site.new(site_params)
+    @site = @company.sites.build(site_params)
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to site_url(@site), notice: "Site was successfully created." }
+        format.html { redirect_to company_sites_path(@company), notice: "Site was successfully created." }
         format.json { render :show, status: :created, location: @site }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class SitesController < ApplicationController
   def update
     respond_to do |format|
       if @site.update(site_params)
-        format.html { redirect_to site_url(@site), notice: "Site was successfully updated." }
+        format.html { redirect_to company_sites_path(@company), notice: "Site was successfully updated." }
         format.json { render :show, status: :ok, location: @site }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +53,7 @@ class SitesController < ApplicationController
     @site.destroy
 
     respond_to do |format|
-      format.html { redirect_to sites_url, notice: "Site was successfully destroyed." }
+      format.html { redirect_to company_sites_path(@company), notice: "Site was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -63,8 +64,12 @@ class SitesController < ApplicationController
       @site = Site.find(params[:id])
     end
 
+    def get_company
+      @company = Company.find(params[:company_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def site_params
-      params.require(:site).permit(:name, :number, :street_address_one, :street_address_two, :town, :post_code, :head_office, :invoice_address, :contact, :invoice_email, :phone_number, :payment_method)
+      params.require(:site).permit(:name, :number, :street_address_one, :street_address_two, :town, :post_code, :head_office, :invoice_address, :contact, :invoice_email, :phone_number, :payment_method, :company_id)
     end
 end

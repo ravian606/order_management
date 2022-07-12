@@ -6,6 +6,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint
+#  user_id    :bigint
+#  site_id    :bigint
 #
 require 'test_helper'
 

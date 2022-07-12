@@ -13,4 +13,12 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+ @import 'bootstrap/scss/bootstrap';
+
+ a:hover {
+    color: #0a58ca !important;
+    background-color: white;    
+}
+
+
+
