@@ -2,7 +2,7 @@
 
 <h1>Companies</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -16,8 +16,9 @@
         <td><%= company.name %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Add Site', new_company_site_path(company.id) %></td>
+        <td><%= link_to "View Sites (#{company.sites.count})", company_sites_path(company.id) %></td>
       </tr>
     <% end %>
   </tbody>

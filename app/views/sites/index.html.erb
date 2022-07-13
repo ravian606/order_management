@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Sites</h1>
-<div class="table-responsive">
-  <table class="table table-ordered w-auto">
+<div>
+  <table class="table table-bordered w-auto table-hover">
     <thead>
       <tr>
         <th>Name</th>
@@ -34,11 +34,12 @@
           <td><%= site.invoice_address %></td>
           <td><%= site.contact %></td>
           <td><%= site.invoice_email %></td>
-          <td><%= site.invoice %></td>
+          <td><%= site.phone_number %></td>
           <td><%= site.payment_method %></td>
-          <td><%= link_to 'Show', site %></td>
-          <td><%= link_to 'Edit', edit_site_path(site) %></td>
-          <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', company_site_path(@company, site) %></td>
+          <td><%= link_to 'Edit', edit_company_site_path(@company, site) %></td>
+          <td><%= link_to 'Delete', company_site_path(@company, site), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Add Contact', new_company_site_contact_path(@company, site) %></td>
         </tr>
       <% end %>
     </tbody>

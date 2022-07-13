@@ -10,8 +10,9 @@
 #  site_id    :bigint
 #
 class Order < ApplicationRecord
-    belongs_to :product
-    
+    has_many :product_order_details
+    has_many products, throug: :product_order_details
+
     belongs_to :user
     belongs_to :site
     

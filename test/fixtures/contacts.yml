@@ -1,0 +1,55 @@
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id               :bigint           not null, primary key
+#  title            :string(255)
+#  first_name       :string(255)
+#  last_name        :string(255)
+#  number           :string(255)
+#  street_address1  :string(255)
+#  street_address2  :string(255)
+#  town             :string(255)
+#  post_code_string :string(255)
+#  email            :string(255)
+#  phone_number     :string(255)
+#  head_office      :string(255)
+#  buyer            :string(255)
+#  invoice          :string(255)
+#  site_id          :bigint           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  company_id       :bigint
+#
+
+one:
+  title: MyString
+  first_name: MyString
+  last_name: MyString
+  number: MyString
+  street_address1: MyString
+  street_address2: MyString
+  town: MyString
+  post_code_string: MyString
+  email: MyString
+  phone_number: MyString
+  head_office: MyString
+  buyer: MyString
+  invoice: MyString
+  site: one
+
+two:
+  title: MyString
+  first_name: MyString
+  last_name: MyString
+  number: MyString
+  street_address1: MyString
+  street_address2: MyString
+  town: MyString
+  post_code_string: MyString
+  email: MyString
+  phone_number: MyString
+  head_office: MyString
+  buyer: MyString
+  invoice: MyString
+  site: two

@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   #devise_for :admins, path: 'admins' # http://localhost:3000/admins/sign_in
 
   resources :companies do 
-    resources :sites
+    resources :sites do
+      resources :contacts
+    end
   end
   resources :products do 
     resources :orders

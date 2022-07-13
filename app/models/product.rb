@@ -12,5 +12,7 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
-    has_many :orders
+    has_many :orders, through: :product_order_details
+    has_many :product_order_details
+
 end

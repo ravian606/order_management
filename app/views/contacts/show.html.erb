@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @contact.title %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @contact.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @contact.number %>
+</p>
+
+<p>
+  <strong>Street address1:</strong>
+  <%= @contact.street_address1 %>
+</p>
+
+<p>
+  <strong>Street address2:</strong>
+  <%= @contact.street_address2 %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @contact.town %>
+</p>
+
+<p>
+  <strong>Post code string:</strong>
+  <%= @contact.post_code_string %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @contact.phone_number %>
+</p>
+
+<p>
+  <strong>Head office:</strong>
+  <%= @contact.head_office %>
+</p>
+
+<p>
+  <strong>Buyer:</strong>
+  <%= @contact.buyer %>
+</p>
+
+<p>
+  <strong>Invoice:</strong>
+  <%= @contact.invoice %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @contact.site_id %>
+</p>
+
+<%= link_to 'Edit', edit_company_site_contact_path(@company, @site, @contact) %> |
+<%= link_to 'Back', company_site_contacts_path(@company, @site) %>

@@ -52,7 +52,7 @@
 
 <p>
   <strong>Invoice:</strong>
-  <%= @site.invoice %>
+  <%= @site.phone_number %>
 </p>
 
 <p>
@@ -60,5 +60,5 @@
   <%= @site.payment_method %>
 </p>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<%= link_to 'Edit', edit_company_site_path(@company, @site) %> |
+<%= link_to 'Back', company_sites_path(@company) %>
