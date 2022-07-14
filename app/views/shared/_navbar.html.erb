@@ -11,7 +11,7 @@
         <%= link_to 'Products', products_path, class: 'nav-link' %>
         <%= link_to 'Companies', companies_path, class: 'nav-link'  %>
         <% #link_to 'Sites', company_sites_path, class: 'nav-link' %>
-        <%= link_to 'Sign Out', destroy_user_session_path, class: 'nav-link'  %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: 'nav-link'  %>
       <% end %>
