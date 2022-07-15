@@ -11,7 +11,7 @@
 #
 class Order < ApplicationRecord
     has_many :product_order_details
-    has_many products, throug: :product_order_details
+    has_many :products, through: :product_order_details
 
     belongs_to :user
     belongs_to :site
