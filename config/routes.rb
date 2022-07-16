@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   resources :products do 
     resources :orders
   end
+  get '/contacts', to: 'contacts#all_contacts'
+  get '/sites', to: 'sites#all_sites'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

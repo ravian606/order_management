@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :get_company_site
+  before_action :get_company_site, except: :all_contacts
   before_action :set_contact, only: %i[ show edit update destroy ]
 
   # GET /contacts or /contacts.json
@@ -56,6 +56,10 @@ class ContactsController < ApplicationController
       format.html { redirect_to company_site_contacts_path(@company, @site), notice: "Contact was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def all_contacts
+    @contacts = Contact.all
   end
 
   private

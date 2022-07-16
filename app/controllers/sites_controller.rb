@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :get_company
+  before_action :get_company, except: :all_sites
   before_action :set_site, only: %i[ show edit update destroy ]
 
   # GET /sites or /sites.json
@@ -56,6 +56,10 @@ class SitesController < ApplicationController
       format.html { redirect_to company_sites_path(@company), notice: "Site was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def all_sites
+    @sites = Site.all
   end
 
   private
