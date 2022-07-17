@@ -14,3 +14,13 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require select2
+//= require_tree  
+
+// $(document).ready(function() {
+//     if ($("#prod_dd").length > 0)
+//         $('#prod_dd').select2();
+//     if ($("#order_product_id").length > 0)
+//         $('#order_product_id').select2();
+        
+// });

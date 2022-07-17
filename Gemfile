@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jquery-rails'
 gem 'devise'
+gem "select2-rails"
 # gem 'bootstrap'
 # gem 'jquery-rails'
 

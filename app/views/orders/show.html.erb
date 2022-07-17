@@ -1,4 +1,28 @@
 <p id="notice"><%= notice %></p>
 
+
+<h1>Order Details for Order# <%= @order.id %></h1>
+<div>
+  <table class="table table-bordered w-auto">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Special instructions</th>
+      </tr>
+    </thead>
+
+    <tbody class="table table-bordered">
+      <% @order_details.each do |detail| %>
+        <tr>
+          <td><%= detail.product.name %></td>
+          <td><%= detail.quantity %></td>
+          <td><%= detail.special_instructions %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

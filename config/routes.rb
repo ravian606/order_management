@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
   end
   resources :products do 
-    resources :orders
+  end
+  resources :orders do
+    # collection do
+    #   get 'add_new'
+    # end
   end
   get '/contacts', to: 'contacts#all_contacts'
   get '/sites', to: 'sites#all_sites'

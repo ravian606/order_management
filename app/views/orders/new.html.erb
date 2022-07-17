@@ -1,5 +1,5 @@
 <h1>New Order</h1>
 
-<%= render 'form', order: @order %>
+<%= render partial: 'form', locals: { order: @order, products: @products, sites: @sites } %>
 
 <%= link_to 'Back', orders_path %>
