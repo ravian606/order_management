@@ -27,26 +27,10 @@
     </div>
   </div>
 
-  <div class="form-group row mb-4">
-    <%= form.label :product_id, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.select :product_id, options_for_select(products.map{|prod| [prod.name, prod.id]}), { prompt: 'Select Product' }, { class: "form-control", id: 'prod_dd' } %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :quantity, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.text_field :quantity, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :special_instructions, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.text_field :special_instructions, class: 'form-control' %>
-    </div>
-  </div>
+  <h2>Add Products</h2>
+  <%= form.fields_for :product_order_details do |product_order_details_form| %>
+    <%= render "product_order_details_fields", f: product_order_details_form, products: products %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>

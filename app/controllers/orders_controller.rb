@@ -15,21 +15,21 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.product_order_details.build
     @products = Product.all
     @sites = Site.all
   end
 
   # GET /orders/1/edit
   def edit
+    @products = Product.all
+    @sites = Site.all
   end
 
   # POST /orders or /orders.json
   def create
-    #@order = @product.orders.build(order_params)
-    @order = Order.new()
-    @order.product_order_details.build(order_params)
+    @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.site_id = params[:order][:site_id]
 
     respond_to do |format|
       if @order.save
@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to product_orders_path(@product), notice: "Order was successfully updated." }
+        format.html { redirect_to order_path(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,7 +71,7 @@ class OrdersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
-      @order = Order.find(params[:id]) #@product.orders.find(params[:id])
+      @order = Order.find(params[:id])
     end
 
     def get_product
@@ -80,8 +80,11 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      #params.fetch(:order, {})
-      params.require(:order).permit(:product_id, :quantity, :special_instructions)
+      params.require(:order).permit(
+        :site_id,
+        :user_id, 
+        product_order_details_attributes: [:product_id, :quantity, :special_instructions]
+      )
     end
 
     def product_order_params
