@@ -11,7 +11,8 @@
 class Order < ApplicationRecord
     has_many :product_order_details, dependent: :destroy
     has_many :products, through: :product_order_details
-    accepts_nested_attributes_for :product_order_details, allow_destroy: true
+    accepts_nested_attributes_for :product_order_details, allow_destroy: true, reject_if: :all_blank
+    #proc { |att| att['name'].blank?}
 
     belongs_to :user
     belongs_to :site

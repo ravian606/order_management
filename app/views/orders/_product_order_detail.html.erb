@@ -1,6 +1,6 @@
 <div class="form-group row mb-4">
     <div class='col-sm-4'>
-        <%= f.select :product_id, options_for_select(products.map{|prod| [prod.name, prod.id]}), { prompt: 'Select Product' }, { class: "form-control", id: 'prod_dd' } %>
+        <%= f.select :product_id, options_for_select(@products.map{|prod| [prod.name, prod.id]}), { prompt: 'Select Product' }, { class: "form-control", id: 'prod_dd' } %>
     </div>
     <div class='col-sm-4'>
         <%= f.text_field :quantity, placeholder: 'Quantity', class: 'form-control' %>
@@ -8,4 +8,6 @@
     <div class='col-sm-4'>
         <%= f.text_field :special_instructions, placeholder: 'Special Instructions', class: 'form-control' %>
     </div>
+    <%= f.input_field :_destroy, as: :hidden %>
+    <%= link_to 'Delete', '#', class: 'remove_record' %>
 </div>

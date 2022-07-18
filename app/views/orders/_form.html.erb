@@ -7,7 +7,7 @@
   </script>
 <% end %>
 
-<%= form_with(model: order, local: true) do |form| %>
+<%= simple_form_for(order) do |form| %>
   <% if order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -23,16 +23,19 @@
   <div class="form-group row mb-4">
     <%= form.label :site_id, class: 'col-sm-2 col-form-label' %>
     <div class='col-sm-10'>
-      <%= form.select :site_id, options_for_select(sites.map{|site| [site.name, site.id]}), { prompt: 'Select Site' }, { class: "form-control", id: 'site_dd' } %>
+      <%= form.select :site_id, options_for_select(@sites.map{|site| [site.name, site.id]}), { prompt: 'Select Site' }, { class: "form-control", id: 'site_dd' } %>
     </div>
   </div>
 
   <h2>Add Products</h2>
-  <%= form.fields_for :product_order_details do |product_order_details_form| %>
-    <%= render "product_order_details_fields", f: product_order_details_form, products: products %>
-  <% end %>
+  <div class='fields'>
+    <%= form.simple_fields_for :product_order_details do |product_order_details_form| %>
+      <%= render "product_order_detail", f: product_order_details_form, products: products %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit class: 'btn btn-primary' %>
+    <%= link_to_add_row('Add Product', form, :product_order_details, class: 'btn') %>
   </div>
 <% end %>
