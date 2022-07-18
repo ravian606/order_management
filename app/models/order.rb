@@ -9,9 +9,9 @@
 #  site_id    :bigint
 #
 class Order < ApplicationRecord
-    has_many :product_order_details
+    has_many :product_order_details, dependent: :destroy
     has_many :products, through: :product_order_details
-    accepts_nested_attributes_for :product_order_details
+    accepts_nested_attributes_for :product_order_details, allow_destroy: true
 
     belongs_to :user
     belongs_to :site
