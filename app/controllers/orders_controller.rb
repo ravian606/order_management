@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(
         :site_id,
         :user_id, 
-        product_order_details_attributes: [:product_id, :quantity, :special_instructions]
+        product_order_details_attributes: [:id, :product_id, :quantity, :special_instructions]
       )
     end
 
