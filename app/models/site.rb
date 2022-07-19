@@ -21,5 +21,5 @@
 #
 class Site < ApplicationRecord
     belongs_to :company
-    has_many :contacts
+    has_many :contacts, :dependent => :delete_all
 end
