@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all #@product.orders
+    @orders = Order.includes(:site).all #@product.orders
   end
 
   # GET /orders/1 or /orders/1.json
@@ -82,7 +82,11 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(
         :site_id,
-        :user_id, 
+        :user_id,
+        :recurring_end_date,
+        :repeat_interval,
+        :is_recurring,
+        :delievery_date,
         product_order_details_attributes: [:id, :product_id, :quantity, :special_instructions]
       )
     end

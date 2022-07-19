@@ -41,4 +41,13 @@ $(document).on('turbolinks:load', function() {
         return event.preventDefault();
     });
 
+    $(function () {
+        var $checkbox = $('[id^="enable"]'),
+            $select = $('#type_select');
+    
+        $checkbox.change(function (e) {
+            $select.prop('disabled', !$checkbox.is(':checked'))
+        });
+    });
+
 });

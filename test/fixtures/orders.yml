@@ -2,11 +2,15 @@
 #
 # Table name: orders
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint
-#  site_id    :bigint
+#  id                 :bigint           not null, primary key
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint
+#  site_id            :bigint
+#  is_recurring       :boolean          default(FALSE)
+#  repeat_interval    :string(255)
+#  delievery_date     :datetime
+#  recurring_end_date :datetime
 #
 
 # This model initially had no columns defined. If you add columns to the
