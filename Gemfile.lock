@@ -201,6 +201,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    transitions (0.2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -253,6 +254,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  transitions (= 0.2.0)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)

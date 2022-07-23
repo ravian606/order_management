@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   resources :products do 
   end
   resources :orders do
-    # collection do
-    #   get 'add_new'
-    # end
+    collection do
+      get 'show_recurring_orders'
+      get 'show_completed_orders'
+    end
+    member do
+      patch 'mark_complete'
+    end
   end
   get '/contacts', to: 'contacts#all_contacts'
   get '/sites', to: 'sites#all_sites'

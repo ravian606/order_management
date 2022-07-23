@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_23_110730) do
+ActiveRecord::Schema.define(version: 2022_07_23_191123) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2022_07_23_110730) do
     t.string "street_address1"
     t.string "street_address2"
     t.string "town"
-    t.string "post_code_string"
+    t.string "post_code"
     t.string "email"
     t.string "phone_number"
     t.string "head_office"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2022_07_23_110730) do
     t.string "repeat_interval"
     t.datetime "delievery_date"
     t.string "recurring_interval"
+    t.string "state"
+    t.string "monday"
+    t.string "tuesday"
+    t.string "wednesday"
+    t.string "thursday"
+    t.string "friday"
+    t.string "saturday"
+    t.string "sunday"
     t.index ["site_id"], name: "index_orders_on_site_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

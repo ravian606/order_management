@@ -28,13 +28,6 @@
   </div>
 
   <div class="form-group row mb-4">
-    <%= form.label :delievery_date, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.date_field :delievery_date, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
     <%= form.label :is_recurring, class: 'col-sm-2 col-form-label' %>
     <div class='col-sm-10'>
       <%= form.check_box :is_recurring %>
@@ -42,16 +35,51 @@
   </div>
 
   <div class="form-group row mb-4">
-    <%= form.label :repeat_interval, class: 'col-sm-2 col-form-label' %>
+    <%= form.label :monday, class: 'col-sm-2 col-form-label' %>
     <div class='col-sm-10'>
-      <%= form.select :repeat_interval, options_for_select(Order::REPEAT_INTERVAL), { prompt: 'Select Repeat Interval' }, { class: "form-control" } %>
+      <%= form.check_box :monday %>
     </div>
   </div>
 
   <div class="form-group row mb-4">
-    <%= form.label :recurring_interval, class: 'col-sm-2 col-form-label' %>
+    <%= form.label :tuesday, class: 'col-sm-2 col-form-label' %>
     <div class='col-sm-10'>
-      <%= form.select :recurring_interval, options_for_select(Order::RECURRING_INTERVAL), { prompt: 'Select Recurring Interval' }, { class: "form-control" } %>
+      <%= form.check_box :tuesday %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label :wednesday, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.check_box :wednesday %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label :thursday, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.check_box :thursday %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label :friday, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.check_box :friday %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label :saturday, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.check_box :saturday %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label :sunday, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.check_box :sunday %>
     </div>
   </div>
 

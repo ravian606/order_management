@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   #before_action :get_product
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[ show edit update destroy mark_complete ]
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.includes(:site).all #@product.orders
+    @orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 8), state: 'Started') #@product.orders
   end
 
   # GET /orders/1 or /orders/1.json
@@ -30,6 +30,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    @order.delievery_date = Date.today + 1
 
     respond_to do |format|
       if @order.save
@@ -68,6 +69,27 @@ class OrdersController < ApplicationController
   def add_new
   end
 
+  def mark_complete
+    respond_to do |format|
+      if @order.update_column(:state, 'Completed')
+        format.html { redirect_to order_path(@order), notice: "Order was successfully updated." }
+        format.json { render :show, status: :ok, location: @order }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def show_recurring_orders
+    show_till = Date.today + 14
+    @orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 14)).where(is_recurring: false, state: 'Started')
+  end
+
+  def show_completed_orders
+    @orders = Order.includes(:site).where(state: 'Completed')
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -87,6 +109,7 @@ class OrdersController < ApplicationController
         :repeat_interval,
         :is_recurring,
         :delievery_date,
+        :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday,
         product_order_details_attributes: [:id, :product_id, :quantity, :special_instructions]
       )
     end

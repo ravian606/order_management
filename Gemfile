@@ -28,6 +28,7 @@ gem 'devise'
 gem "select2-rails"
 gem 'simple_form'
 gem 'amoeba'
+gem 'transitions', '=0.2.0', :require => ['transitions', 'active_record/transitions']
 # gem 'bootstrap'
 # gem 'jquery-rails'
 
