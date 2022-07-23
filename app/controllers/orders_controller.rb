@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(
         :site_id,
         :user_id,
-        :recurring_end_date,
+        :recurring_interval,
         :repeat_interval,
         :is_recurring,
         :delievery_date,

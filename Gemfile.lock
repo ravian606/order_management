@@ -58,6 +58,8 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    amoeba (3.2.0)
+      activerecord (>= 4.2.0)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -232,6 +234,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  amoeba
   annotate
   bootsnap (>= 1.4.2)
   byebug

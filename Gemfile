@@ -27,6 +27,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem "select2-rails"
 gem 'simple_form'
+gem 'amoeba'
 # gem 'bootstrap'
 # gem 'jquery-rails'
 
