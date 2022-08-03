@@ -1,7 +1,7 @@
 <h1>Orders</h1>
 
 <% if current_user.is_admin? %>
-    <% render partial: 'orders_list' %>
+    <%= render partial: 'orders_list' %>
 <% else %>
     <%= render partial: 'order_control_panel', locals: { orders: @orders, show_actions: true } %>
 
