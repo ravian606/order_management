@@ -4,7 +4,13 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 8), state: 'Started') #@product.orders
+    if current_user.is_admin?
+      @orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 8), state: 'Started')
+    else
+      @orders = current_user.orders.includes(:product_order_details).where(delievery_date: Date.today..(Date.today + 7), state: 'Started')
+      @upcoming_orders = current_user.orders.includes(:product_order_details).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started')
+      @completed_orders = current_user.orders.includes(:product_order_details).where(state: 'Completed')
+    end
   end
 
   # GET /orders/1 or /orders/1.json

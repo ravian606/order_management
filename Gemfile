@@ -29,6 +29,7 @@ gem "select2-rails"
 gem 'simple_form'
 gem 'amoeba'
 gem 'transitions', '=0.2.0', :require => ['transitions', 'active_record/transitions']
+
 # gem 'bootstrap'
 # gem 'jquery-rails'
 
@@ -67,3 +68,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "jquery-datatables", "~> 1.10"

@@ -1,10 +1,5 @@
-<% content_for :head do %>  
-  <script type="text/javascript">
-    // $(document).ready(function() { 
-    //   $("#prod_dd").select2();
-    //   $("#order_product_id").select2();
-    // });
-  </script>
+<% content_for :head do %>
+  <%= javascript_pack_tag 'orders' %>
 <% end %>
 
 <hr>
@@ -36,58 +31,29 @@
     </div>
   </div>
   <hr>
-  <h2>Delievery Days</h2>
+  <div class="form-group row mb-4">
+    <%= form.label :delievery_date, class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.date_field :delievery_date, class: "form-control" %>
+    </div>
+  </div>
+
+   <div class="form-group row mb-4">
+    <%= form.label 'Frequency', class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <%= form.select :repeat_interval, options_for_select(Order::REPEAT_INTERVAL), { prompt: 'Select Repeat Frequency' }, { class: "form-control" } %>
+    </div>
+  </div>
+
+  <div class="form-group row mb-4">
+    <%= form.label 'Delievery Day', class: 'col-sm-2 col-form-label' %>
+    <div class='col-sm-10'>
+      <h4 id='delievery_day'></h4>
+    </div>
+  </div>
+  
+
   <hr>
-  <div class="form-group row mb-4">
-    <%= form.label :monday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :monday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :tuesday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :tuesday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :wednesday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :wednesday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :thursday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :thursday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :friday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :friday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :saturday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :saturday %>
-    </div>
-  </div>
-
-  <div class="form-group row mb-4">
-    <%= form.label :sunday, class: 'col-sm-2 col-form-label' %>
-    <div class='col-sm-10'>
-      <%= form.check_box :sunday %>
-    </div>
-  </div>
-  <hr>
-
   <h2>Add Products</h2>
   <div class='fields'>
     <%= form.simple_fields_for :product_order_details do |product_order_details_form| %>

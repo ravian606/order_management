@@ -10,7 +10,15 @@
 #  is_recurring       :boolean          default(FALSE)
 #  repeat_interval    :string(255)
 #  delievery_date     :datetime
-#  recurring_end_date :datetime
+#  recurring_interval :string(255)
+#  state              :string(255)
+#  monday             :string(255)
+#  tuesday            :string(255)
+#  wednesday          :string(255)
+#  thursday           :string(255)
+#  friday             :string(255)
+#  saturday           :string(255)
+#  sunday             :string(255)
 #
 
 # This model initially had no columns defined. If you add columns to the

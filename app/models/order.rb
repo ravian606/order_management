@@ -10,7 +10,15 @@
 #  is_recurring       :boolean          default(FALSE)
 #  repeat_interval    :string(255)
 #  delievery_date     :datetime
-#  recurring_end_date :datetime
+#  recurring_interval :string(255)
+#  state              :string(255)
+#  monday             :string(255)
+#  tuesday            :string(255)
+#  wednesday          :string(255)
+#  thursday           :string(255)
+#  friday             :string(255)
+#  saturday           :string(255)
+#  sunday             :string(255)
 #
 class Order < ApplicationRecord
     #include ActiveModel::Transitions
@@ -22,7 +30,6 @@ class Order < ApplicationRecord
     amoeba do
         enable
     end
-    #proc { |att| att['name'].blank?}
 
     after_save :create_recurring_orders
     before_save :add_state_to_new_order
@@ -58,7 +65,7 @@ class Order < ApplicationRecord
         #byebug
         #self.errors.add(:base, "Recurring end date should be greater than delievery date") if difference <= 0
         #return if difference <= 0
-        for i in 1..300
+        for i in 1..15
             new_order = self.amoeba_dup
             new_order.is_recurring = false
             new_order.delievery_date = new_order.delievery_date.to_date + (i * convert_difference)

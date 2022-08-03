@@ -1,0 +1,56 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price Per Unit</th>
+      <th>Total Cost</th>
+      <th>Frequency</th>
+      <th>Delievery Day</th>
+      <th>Delievery Date</th>
+      <% if show_actions %>
+        <th colspan="3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% orders&.each_with_index do |order, index| %>
+        <% order.product_order_details.each do |detail| %>
+            <tr>
+                <td><%= detail.product.name %></td>
+                <td><%= detail.quantity %></td>
+                <td><%= detail.product.price %></td>
+                <td><%= calculate_total_cost_of_product(detail.quantity, detail.product.price) %></td>
+                <td><%= order.repeat_interval %></td>
+                <td><%= display_delievery_day(order.delievery_date) %></td>
+                <td><%= order.delievery_date.strftime("%d/%m/%Y") %></td>
+                <% if show_actions %>
+                    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+                    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    <% if params[:action] == 'index' && order.state == 'Started'  %>
+                        <td><%= link_to 'Mark Complete', mark_complete_order_path(order), method: :patch %></td>
+                    <% end %>
+                <% end %>
+            </tr>
+        <% end %>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <% if show_actions %>
+                <td></td>
+                <td></td>
+                <td></td>
+            <% end %>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -1,6 +1,18 @@
 <h1>Orders</h1>
 
-<%= render partial: 'orders_list' %>
+<% if current_user.is_admin? %>
+    <% render partial: 'orders_list' %>
+<% else %>
+    <%= render partial: 'order_control_panel', locals: { orders: @orders, show_actions: true } %>
+
+    <h2 class='mt-5'>Upcoming Orders</h2>
+    <%= render partial: 'order_control_panel', locals: { orders: @upcoming_orders, show_actions: true } %>
+
+    <h2 class='mt-5'>Completed Orders</h2>
+    <%= render partial: 'order_control_panel', locals: { orders: @completed_orders, show_actions: false } %>
+
+    
+<% end%>
 
 <br>
 
