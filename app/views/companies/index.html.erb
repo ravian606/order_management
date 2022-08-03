@@ -4,6 +4,16 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Number</th>
+      <th>Street address one</th>
+      <th>Street address two</th>
+      <th>Town</th>
+      <th>Post code</th>
+      <th>Head office</th>
+      <th>Invoice address</th>
+      <th>Contact</th>
+      <th>Invoice Email</th>
+      <th>Payment Method</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -12,6 +22,16 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
+        <td><%= company.number %></td>
+        <td><%= company.street_address_one %></td>
+        <td><%= company.street_address_two %></td>
+        <td><%= company.town %></td>
+        <td><%= company.post_code %></td>
+        <td><%= company.head_office %></td>
+        <td><%= company.invoice_address %></td>
+        <td><%= company.contact %></td>
+        <td><%= company.payment_method %></td>
+        <td><%= company.invoice_email %></td>
         <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <% link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' } %>

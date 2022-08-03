@@ -5,6 +5,57 @@
   <%= @company.name %>
 </p>
 
+
+<p>
+  <strong>Number:</strong>
+  <%= @company.number %>
+</p>
+
+<p>
+  <strong>Street address one:</strong>
+  <%= @company.street_address_one %>
+</p>
+
+<p>
+  <strong>Street address two:</strong>
+  <%= @company.street_address_two %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @company.town %>
+</p>
+
+<p>
+  <strong>Post code:</strong>
+  <%= @company.post_code %>
+</p>
+
+<p>
+  <strong>Head office:</strong>
+  <%= @company.head_office %>
+</p>
+
+<p>
+  <strong>Invoice address:</strong>
+  <%= @company.invoice_address %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @company.contact %>
+</p>
+
+<p>
+  <strong>Invoice email:</strong>
+  <%= @company.invoice_email %>
+</p>
+
+<p>
+  <strong>Payment method:</strong>
+  <%= @company.payment_method %>
+</p>
+
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %> |
 <%= link_to 'Add Site', new_company_site_path(@company) %>

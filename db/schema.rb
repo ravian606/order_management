@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_23_191123) do
+ActiveRecord::Schema.define(version: 2022_08_03_205004) do
 
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "number"
+    t.string "street_address_one"
+    t.string "street_address_two"
+    t.string "town"
+    t.string "post_code"
+    t.string "head_office"
+    t.string "invoice_address"
+    t.string "contact"
+    t.string "invoice_email"
+    t.string "payment_method"
   end
 
   create_table "contacts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
