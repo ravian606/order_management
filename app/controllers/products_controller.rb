@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    if params.dig(:name)
+      @products = params[:name].empty? ? Product.all : Product.where(name: params[:name])
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1 or /products/1.json

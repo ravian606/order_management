@@ -3,7 +3,11 @@ class CompaniesController < ApplicationController
 
   # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    if params.dig(:name)
+      @companies = params[:name].empty? ? Company.all : Company.where(name: params[:name])
+    else
+      @companies = Company.all
+    end
   end
 
   # GET /companies/1 or /companies/1.json
