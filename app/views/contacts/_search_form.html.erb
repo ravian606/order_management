@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="form-group">
+        <%= form_tag(company_site_contacts_path(@company, @site), method: :get) do %>
+            <div class='col-4 mb-4'>
+                <%= text_field_tag(:title, params[:title]) %>
+                <%= submit_tag ("Search") %>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -4,7 +4,11 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = @site.contacts
+    if params.dig(:title)
+      @contacts = params[:title].empty? ? @site.contacts : @site.contacts.where("lower(title) = ?", params[:title].downcase)
+    else
+      @contacts = @site.contacts
+    end
   end
 
   # GET /contacts/1 or /contacts/1.json
