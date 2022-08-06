@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies or /companies.json
   def index
     if params.dig(:name)
-      @companies = params[:name].empty? ? Company.all : Company.where(name: params[:name])
+      @companies = params[:name].empty? ? Company.all : Company.where("lower(name) = ?", params[:name].downcase)
     else
       @companies = Company.all
     end

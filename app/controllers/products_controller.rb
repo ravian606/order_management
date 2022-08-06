@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     if params.dig(:name)
-      @products = params[:name].empty? ? Product.all : Product.where(name: params[:name])
+      @products = params[:name].empty? ? Product.all : Product.where("lower(name) = ?", params[:name].downcase)
     else
       @products = Product.all
     end
