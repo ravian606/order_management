@@ -4,7 +4,11 @@ class SitesController < ApplicationController
 
   # GET /sites or /sites.json
   def index
-    @sites = @company.sites
+    if params.dig(:name)
+      @sites = params[:name].empty? ? @company.sites : @company.sites.where("lower(name) = ?", params[:name].downcase)
+    else
+      @sites = @company.sites
+    end
   end
 
   # GET /sites/1 or /sites/1.json
