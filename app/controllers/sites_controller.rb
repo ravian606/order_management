@@ -17,6 +17,7 @@ class SitesController < ApplicationController
 
   # GET /sites/new
   def new
+    #byebug
     @site = @company.sites.build
   end
 
@@ -63,7 +64,11 @@ class SitesController < ApplicationController
   end
 
   def all_sites
-    @sites = Site.all
+    if params.dig(:name)
+      @sites = params[:name].empty? ? Site.all : Site.where("lower(name) = ?", params[:name].downcase)
+    else
+      @sites = Site.all
+    end
   end
 
   private

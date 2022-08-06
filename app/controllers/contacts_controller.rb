@@ -59,7 +59,11 @@ class ContactsController < ApplicationController
   end
 
   def all_contacts
-    @contacts = Contact.all
+    if params.dig(:title)
+      @contacts = params[:title].empty? ? Contact.all : Contact.where("lower(title) = ?", params[:title].downcase)
+    else
+      @contacts = Contact.all
+    end
   end
 
   private
