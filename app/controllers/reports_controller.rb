@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
     def production_summary
-        orders = Order.joins(:product_order_details, :products).where(delievery_date: Date.today..(Date.today + 7), state: 'Started').group('product_order_details.product_id','orders.delievery_date').sum('product_order_details.quantity')
+        orders = Order.joins(:product_order_details, :products).where(delievery_date: Date.today..(Date.today + 7), state: 'Started').group('product_order_details.product_id','orders.delievery_date').sum('product_order_details.quantity::int')
         products = Product.all
         @report_data = prepare_production_summary_data(orders, products)
     end
@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
     def orders_summary
         delievery_date = params[:delievery_date].present? ? params[:delievery_date] : Date.today
         @orders = Order.where(delievery_date: delievery_date, state: 'Started')
-        @count_summary = Order.joins(:product_order_details).where(delievery_date: delievery_date, state: 'Started').group('product_order_details.order_id').sum('product_order_details.quantity')
+        @count_summary = Order.joins(:product_order_details).where(delievery_date: delievery_date, state: 'Started').group('product_order_details.order_id').sum('product_order_details.quantity::int')
     end
 
     private
