@@ -12,6 +12,7 @@
       <th>Packaging</th>
       <th>Description</th>
       <th>Price</th>
+      <th>VAT</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= product.packaging %></td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
+        <td><%= product.vat %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

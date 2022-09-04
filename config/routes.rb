@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   get '/sites', to: 'sites#all_sites'
   get '/reports/production', to: 'reports#production_summary'
   get '/reports/order', to: 'reports#orders_summary'
+  get '/reports/order_details', to: 'reports#order_details'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
