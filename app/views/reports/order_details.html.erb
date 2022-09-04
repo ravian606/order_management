@@ -40,7 +40,7 @@
                 <td><%= (order_detail.quantity.to_i * order_detail.product.price.to_i)  %></td>
                 <td><%= calculate_cost_including_vat(order_detail) %> </td>
                 <td><%= order_detail.order.repeat_interval %></td>
-                <td>Delievery Day</td>
+                <td><%= display_delievery_day(order_detail.order.delievery_date)  %></td>
                 <td><%= order_detail.order.state %></td>
             </tr>
         <% end %>
