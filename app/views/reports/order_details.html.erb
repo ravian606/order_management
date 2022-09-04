@@ -1,0 +1,47 @@
+<h1>Orders Details Report</h1>
+  <table class="table table-bordered w-auto">
+    <thead>
+      <tr>
+        <th>Contact Name</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Street Address 1</th>
+        <th>Street Address 2</th>
+        <th>Post Code</th>
+        <th>Special Instructions</th>
+        <th>Email</th>
+        <th>Service</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price Per Unit</th>
+        <th>Total Cost</th>
+        <th>Including VAT</th>
+        <th>Frequency</th>
+        <th>Delivery Day</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody class="table table-bordered">
+        <% @order_details&.each do |order_detail| %>
+            <tr>
+                <td><strong> <%= order_detail.order.site.contact %> </strong> </td>
+                <td><%= order_detail.order.site.company.name %></td>
+                <td><%= order_detail.order.site.phone_number %></td>
+                <td><%= order_detail.order.site.street_address_one %></td>
+                <td><%= order_detail.order.site.street_address_two %></td>
+                <td><%= order_detail.order.site.post_code %></td>
+                <td><%= order_detail.special_instructions %></td>
+                <td><%= order_detail.order.user.email %></td>
+                <td>13</td>
+                <td><%= order_detail.product.name %></td>
+                <td><%= order_detail.quantity %></td>
+                <td><%= order_detail.product.price %></td>
+                <td><%= (order_detail.quantity.to_i * order_detail.product.price.to_i)  %></td>
+                <td>VAT</td>
+                <td><%= order_detail.order.repeat_interval %></td>
+                <td>Delievery Day</td>
+                <td><%= order_detail.order.state %></td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>

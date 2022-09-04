@@ -11,6 +11,10 @@ class ReportsController < ApplicationController
         @count_summary = Order.joins(:product_order_details).where(delievery_date: delievery_date, state: 'Started').group('product_order_details.order_id').sum('product_order_details.quantity::int')
     end
 
+    def order_details
+        @order_details = ProductOrderDetail.joins(:order).where('orders.delievery_date IN (?) ', Date.today..(Date.today + 7))
+    end
+
     private
     def display_delievery_day(delievery_date)
         %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday][delievery_date.wday]
@@ -42,19 +46,4 @@ class ReportsController < ApplicationController
         end
         report_data
     end
-
-    # def 
-    #     require 'csv'
- 
-    #     file = "#{Rails.root}/public/data.csv"
-        
-    #     table = User.all;0 # ";0" stops output.  Change "User" to any model.
-        
-    #     CSV.open( file, 'w' ) do |writer|
-    #         writer << table.first.attributes.map { |a,v| a }
-    #         table.each do |s|
-    #             writer << s.attributes.map { |a,v| v }
-    #         end
-    #     end
-    # end
 end

@@ -1,4 +1,4 @@
-<h1>Report</h1>
+<h1>Orders Report</h1>
 <div class="row">
     <div class="form-group">
         <%= form_tag(reports_order_path, method: :get) do %>
@@ -28,16 +28,16 @@
     <tbody class="table table-bordered">
         <% @orders.each do |order| %>
             <tr>
-            <td><strong> <%= order.site.contact %> </strong> </td>
-            <td><%= order.site.company.name %></td>
-            <td><%= order.site.phone_number %></td>
-            <td><%= order.site.street_address_one %></td>
-            <td><%= order.site.street_address_two %></td>
-            <td><%= order.site.post_code %></td>
-            <td><%= @count_summary[order.id] %></td>
-            <td><%= order.site.phone_number %></td>
-            <td><%= order.site.invoice_email %></td>
-            <td>13</td>
+              <td><strong> <%= order.site.contact %> </strong> </td>
+              <td><%= order.site.company.name %></td>
+              <td><%= order.site.phone_number %></td>
+              <td><%= order.site.street_address_one %></td>
+              <td><%= order.site.street_address_two %></td>
+              <td><%= order.site.post_code %></td>
+              <td><%= @count_summary[order.id] %></td>
+              <td><%= order.site.phone_number %></td>
+              <td><%= order.site.invoice_email %></td>
+              <td>13</td>
             </tr>
         <% end %>
     </tbody>
