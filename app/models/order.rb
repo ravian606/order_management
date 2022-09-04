@@ -65,7 +65,7 @@ class Order < ApplicationRecord
         #byebug
         #self.errors.add(:base, "Recurring end date should be greater than delievery date") if difference <= 0
         #return if difference <= 0
-        for i in 1..15
+        for i in 1..45
             new_order = self.amoeba_dup
             new_order.is_recurring = false
             new_order.delievery_date = new_order.delievery_date.to_date + (i * convert_difference)
