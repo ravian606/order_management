@@ -14,9 +14,11 @@
         <%= link_to 'Companies', companies_path, class: 'nav-link'  %>
         <%= link_to 'Contacts', contacts_path, class: 'nav-link'  %>
         <%= link_to 'Sites', sites_path, class: 'nav-link' %>
-        <%= link_to orders_heading, orders_path, class: 'nav-link' %>
+        <%= link_to 'Order Control Panel', orders_path, class: 'nav-link' %>
         <% link_to 'View Recurring Orders', show_recurring_orders_orders_path, class: 'nav-link' %>
         <% link_to 'View Completed Orders', show_completed_orders_orders_path, class: 'nav-link' %>
+        <%= link_to 'Production Report', reports_production_path, class: 'nav-link' %>
+        <%= link_to 'Order Report', reports_order_path, class: 'nav-link' %>
         <%= link_to 'Add Order', new_order_path, class: 'nav-link' %>
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link'  %>
       <% else %>

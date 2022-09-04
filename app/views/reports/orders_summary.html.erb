@@ -1,0 +1,45 @@
+<h1>Report</h1>
+<div class="row">
+    <div class="form-group">
+        <%= form_tag(reports_order_path, method: :get) do %>
+            <div class='col-4 mb-4'>
+                <%= date_field_tag(:delievery_date, params[:delievery_date])%>
+                <%= submit_tag ("Search") %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div>
+  <table class="table table-bordered w-auto">
+    <thead>
+      <tr>
+        <th>Contact Name</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Street Address 1</th>
+        <th>Street Address 2</th>
+        <th>Post Code</th>
+        <th>Quantity</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Service</th>
+      </tr>
+    </thead>
+    <tbody class="table table-bordered">
+        <% @orders.each do |order| %>
+            <tr>
+            <td><strong> <%= order.site.contact %> </strong> </td>
+            <td><%= order.site.company.name %></td>
+            <td><%= order.site.phone_number %></td>
+            <td><%= order.site.street_address_one %></td>
+            <td><%= order.site.street_address_two %></td>
+            <td><%= order.site.post_code %></td>
+            <td><%= @count_summary[order.id] %></td>
+            <td><%= order.site.phone_number %></td>
+            <td><%= order.site.invoice_email %></td>
+            <td>13</td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

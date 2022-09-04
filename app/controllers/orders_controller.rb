@@ -5,7 +5,27 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     if current_user.is_admin?
-      @orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 8), state: 'Started')
+      #@orders = Order.includes(:site).where(delievery_date: Date.today..(Date.today + 8), state: 'Started')
+      @users = User.all
+      @sites = Site.all
+
+      if params[:users].present? && params[:sites].present?
+        @orders = Order.includes(:product_order_details).joins(:user).joins(:site).where(delievery_date: Date.today..(Date.today + 7), state: 'Started').where('users.id = ?', params[:users]).where('sites.id = ?', params[:sites])
+        @upcoming_orders = Order.includes(:product_order_details).joins(:user).joins(:site).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started').where('users.id = ?', params[:users]).where('sites.id = ?', params[:sites])
+        @completed_orders = Order.includes(:product_order_details).joins(:user).joins(:site).where(state: 'Completed').where('users.id = ?', params[:users]).where('sites.id = ?', params[:sites])
+      elsif params[:users].present? && params[:sites].nil?
+        @orders = Order.includes(:product_order_details).joins(:user).where(delievery_date: Date.today..(Date.today + 7), state: 'Started').where('users.id = ?', params[:users])
+        @upcoming_orders = Order.includes(:product_order_details).joins(:user).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started').where('users.id = ?', params[:users])
+        @completed_orders = Order.includes(:product_order_details).joins(:user).where(state: 'Completed').where('users.id = ?', params[:users])
+      elsif params[:sites].present? && params[:users].nil?
+        @orders = Order.includes(:product_order_details).joins(:site).where(delievery_date: Date.today..(Date.today + 7), state: 'Started').where('sites.id = ?', params[:sites])
+        @upcoming_orders = Order.includes(:product_order_details).joins(:site).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started').where('sites.id = ?', params[:sites])
+        @completed_orders = Order.includes(:product_order_details).joins(:site).where(state: 'Completed').where('sites.id = ?', params[:sites])
+      else
+        @orders = Order.includes(:product_order_details).where(delievery_date: Date.today..(Date.today + 7), state: 'Started')
+        @upcoming_orders = Order.includes(:product_order_details).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started')
+        @completed_orders = Order.includes(:product_order_details).where(state: 'Completed')
+      end
     else
       @orders = current_user.orders.includes(:product_order_details).where(delievery_date: Date.today..(Date.today + 7), state: 'Started')
       @upcoming_orders = current_user.orders.includes(:product_order_details).where(delievery_date: (Date.today + 8)..(Date.today + 29), state: 'Started')
@@ -36,7 +56,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
-    @order.delievery_date = Date.today + 1
 
     respond_to do |format|
       if @order.save
